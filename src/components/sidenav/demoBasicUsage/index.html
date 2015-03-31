@@ -26,6 +26,9 @@
         <p>
         The left sidenav will 'lock open' on a medium (>=960px wide) device.
         </p>
+        <p>
+        The right sidenav will focus on a specific child element.
+        </p>
 
         <div>
           <md-button ng-click="toggleLeft()"
@@ -46,12 +49,18 @@
 
     </md-content>
 
-    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-no-focus="true" md-component-id="right">
 
       <md-toolbar class="md-theme-light">
         <h1 class="md-toolbar-tools">Sidenav Right</h1>
       </md-toolbar>
       <md-content ng-controller="RightCtrl" class="md-padding">
+
+        <md-input-container>
+          <label>Test input</label>
+          <input ng-model="data" id="focusInput">
+        </md-input-container>
+
         <md-button ng-click="close()" class="md-primary">
           Close Sidenav Right
         </md-button>

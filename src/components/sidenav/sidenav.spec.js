@@ -61,6 +61,15 @@ describe('mdSidenav', function() {
       expect($document.activeElement).toBe(el[0]);
     }));
 
+    it('should not focus sidenav with md-no-focus on open', inject(function($rootScope, $animate, $document) {
+      TestUtil.mockElementFocus(this);
+      var el = setup('md-is-open="show" md-no-focus="true"');
+      $rootScope.$apply('show = true');
+
+      $animate.triggerCallbacks();
+      expect($document.activeElement).not.toBe(el[0]);
+    }));
+
     it('should lock open when is-locked-open is true', inject(function($rootScope, $animate, $document) {
       var el = setup('md-is-open="show" md-is-locked-open="lock"');
       expect(el.hasClass('md-locked-open')).toBe(false);

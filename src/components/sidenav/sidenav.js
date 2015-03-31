@@ -92,6 +92,9 @@ function SidenavService($mdComponentRegistry, $q) {
  *
  * By default, upon opening it will slide out on top of the main content area.
  *
+ * For keyboard and screen reader accessibility, focus is sent to the sidenav wrapper by default.
+ * It can be overridden with `md-no-focus="true"` to allow focus to be sent to a different element.
+ *
  * @usage
  * <hljs lang="html">
  * <div layout="row" ng-controller="MyController">
@@ -136,6 +139,9 @@ function SidenavService($mdComponentRegistry, $q) {
  *   - `<md-sidenav md-is-locked-open="shouldLockOpen"></md-sidenav>`
  *   - `<md-sidenav md-is-locked-open="$mdMedia('min-width: 1000px')"></md-sidenav>`
  *   - `<md-sidenav md-is-locked-open="$mdMedia('sm')"></md-sidenav>` (locks open on small screens)
+ * @param {boolean=} md-no-focus For accessibility, focus will be sent to the sidenav by default.
+ * To allow focus overrides, use `md-no-focus="true"`.
+ *
  */
 function SidenavDirective($timeout, $animate, $parse, $log, $mdMedia, $mdConstant, $compile, $mdTheming, $q, $document) {
   return {
@@ -158,6 +164,8 @@ function SidenavDirective($timeout, $animate, $parse, $log, $mdMedia, $mdConstan
     var lastParentOverFlow;
     var triggeringElement = null;
     var promise = $q.when(true);
+
+    var overrideFocus = !!attr.mdNoFocus;
 
     var isLockedOpenParsed = $parse(attr.mdIsLockedOpen);
     var isLocked = function() {
@@ -215,7 +223,7 @@ function SidenavDirective($timeout, $animate, $parse, $log, $mdMedia, $mdConstan
         $animate[isOpen ? 'enter' : 'leave'](backdrop, parent),
         $animate[isOpen ? 'removeClass' : 'addClass'](element, 'md-closed').then(function() {
           // If we opened, and haven't closed again before the animation finished
-          if (scope.isOpen) {
+          if (scope.isOpen && !overrideFocus) {
             element.focus();
           }
         })
