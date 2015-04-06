@@ -3164,7 +3164,6 @@ md-content {
   overflow: visible; }
 
 md-autocomplete {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
   border-radius: 2px;
   display: block;
   height: 40px;
@@ -3187,7 +3186,7 @@ md-autocomplete {
     display: block;
     position: relative;
     overflow: visible;
-    height: 40px; }
+    height: 35px; }
     md-autocomplete md-autocomplete-wrap md-progress-linear {
       position: absolute;
       bottom: 0;
@@ -3213,12 +3212,10 @@ md-autocomplete {
     top: 0;
     width: 100%;
     box-sizing: border-box;
-    border: none;
     box-shadow: none;
-    padding: 0 15px;
     font-size: 14px;
-    line-height: 40px;
-    height: 40px;
+    line-height: 35px;
+    height: 35px;
     outline: none;
     z-index: 2;
     background: transparent; }
@@ -3226,7 +3223,7 @@ md-autocomplete {
       display: none; }
   md-autocomplete button {
     position: absolute;
-    top: 10px;
+    top: 7px;
     right: 10px;
     line-height: 20px;
     z-index: 2;
@@ -3294,7 +3291,7 @@ md-autocomplete {
     z-index: 49; }
     md-autocomplete ul li {
       border-top: 1px solid #ddd;
-      padding: 0 15px;
+      padding: 0 5px;
       line-height: 40px;
       font-size: 14px;
       overflow: hidden;
