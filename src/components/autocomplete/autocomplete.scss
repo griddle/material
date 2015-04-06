@@ -37,6 +37,9 @@ md-autocomplete {
   position: relative;
   overflow: visible;
   min-width: 190px;
+  &.ng-invalid input{
+    border: solid 1px #ff0000;
+  }
   &[md-floating-label] {
     box-shadow: none;
     border-radius: 0;
